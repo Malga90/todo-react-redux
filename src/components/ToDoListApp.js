@@ -1,4 +1,5 @@
 import React from "react";
+import ListElement from "./ListElement";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
@@ -6,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
-class TodoList extends React.Component {
+export default class TodoList extends React.Component {
   render() {
     return (
       <Container className="mt-4">
@@ -27,8 +28,8 @@ class TodoList extends React.Component {
             </InputGroup.Append>
           </InputGroup>
         </Form>
+        <ListElement />
       </Container>
     );
   }
 }
-export default TodoList;
