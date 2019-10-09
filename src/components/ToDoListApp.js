@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as todoAction from "../actions/todoAction";
 import ListElement from "./ListElement";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
