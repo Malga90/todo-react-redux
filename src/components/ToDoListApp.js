@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
-export default class TodoList extends React.Component {
+export class TodoList extends React.Component {
   render() {
     return (
       <Container className="mt-4">
@@ -35,3 +35,20 @@ export default class TodoList extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    todos: state.todos
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodo: text => dispatch(todoAction.addTodo(text))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);

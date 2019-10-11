@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actionType";
+import * as actionTypes from "../actions/actionTypes";
 
 const todoReducerDefaultState = [];
 
