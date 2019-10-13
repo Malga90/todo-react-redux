@@ -14,24 +14,33 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 export class TodoList extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      item: ""
+      inputValue: ""
     };
   }
 
   handleChange(e) {
     this.setState({
-      item: e.target.value
+      inputValue: e.target.value
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
+
     let todo = {
-      item: this.state.item
+      inputValue: this.state.inputValue
     };
+
+    if (!todo.inputValue) {
+      return false;
+    } else {
+      e.target.elements[0].value = "";
+    }
+
     this.props.addTodo(todo);
   }
 
@@ -43,11 +52,7 @@ export class TodoList extends React.Component {
         </Row>
         <Form onSubmit={this.handleSubmit}>
           <InputGroup className="mb-3" onChange={this.handleChange}>
-            <FormControl
-              placeholder="What would you like to do?"
-              aria-label="To do to add"
-              aria-describedby="basic-addon2"
-            />
+            <FormControl placeholder="What would you like to do?" />
             <InputGroup.Append>
               <Button type="submit" variant="info">
                 Add
@@ -58,9 +63,9 @@ export class TodoList extends React.Component {
         <ListGroup>
           {this.props.todos.map((todo, i) => (
             <ListGroup.Item className="d-flex justify-content-between" key={i}>
-              {todo.item}
+              {i + 1}. {todo.inputValue}
               <ButtonGroup>
-                <Button variant="success">Done</Button>
+                <Button variant="success">Done!!</Button>
                 <Button variant="danger">Remove</Button>
               </ButtonGroup>
             </ListGroup.Item>
