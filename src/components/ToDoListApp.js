@@ -27,7 +27,6 @@ export class TodoList extends React.Component {
     this.setState({
       inputValue: e.target.value
     });
-    console.log(this.props.todos);
   }
 
   handleSubmit(e) {
@@ -41,6 +40,10 @@ export class TodoList extends React.Component {
       return false;
     } else {
       e.target.elements[0].value = "";
+
+      this.setState({
+        inputValue: ""
+      });
     }
 
     this.props.addTodo(todo);
