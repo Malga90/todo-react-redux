@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+//import { getTodos } from "../selectors/selectors";
 import * as todoAction from "../actions/todoAction";
 // import ListElement from "./ListElement";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -26,6 +27,7 @@ export class TodoList extends React.Component {
     this.setState({
       inputValue: e.target.value
     });
+    console.log(this.props.todos);
   }
 
   handleSubmit(e) {
@@ -76,9 +78,10 @@ export class TodoList extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, store) => {
   return {
-    todos: state.todos
+    todos: state.todos,
+    storeTodos: store.todos
   };
 };
 
