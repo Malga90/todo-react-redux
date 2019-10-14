@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 //import { getTodos } from "../selectors/selectors";
 import * as todoAction from "../actions/todoAction";
-// import ListElement from "./ListElement";
+import ListElement from "./ListElement";
 import InputGroup from "react-bootstrap/InputGroup";
 import ListGroup from "react-bootstrap/ListGroup";
 import FormControl from "react-bootstrap/FormControl";
@@ -10,7 +10,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 export class TodoList extends React.Component {
   constructor(props) {
@@ -66,14 +65,8 @@ export class TodoList extends React.Component {
           </InputGroup>
         </Form>
         <ListGroup>
-          {this.props.todos.map((todo, i) => (
-            <ListGroup.Item className="d-flex justify-content-between" key={i}>
-              {i + 1}. {todo.inputValue}
-              <ButtonGroup>
-                <Button variant="success">Done!!</Button>
-                <Button variant="danger">Remove</Button>
-              </ButtonGroup>
-            </ListGroup.Item>
+          {this.props.todos.map((todo, index) => (
+            <ListElement key={index} todo={todo.inputValue} count={index + 1} />
           ))}
         </ListGroup>
       </Container>

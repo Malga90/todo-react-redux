@@ -8,7 +8,7 @@ export default class ListElement extends React.Component {
     return (
       <div>
         <ListGroup.Item className="d-flex justify-content-between">
-          {this.props.item}
+          {this.props.count}. {this.props.todo}
           <ButtonGroup>
             <Button variant="success">Done</Button>
             <Button variant="danger">Remove</Button>
