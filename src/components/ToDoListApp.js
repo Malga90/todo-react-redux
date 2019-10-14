@@ -17,6 +17,7 @@ export class TodoList extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {
       inputValue: ""
     };
@@ -66,7 +67,12 @@ export class TodoList extends React.Component {
         </Form>
         <ListGroup>
           {this.props.todos.map((todo, index) => (
-            <ListElement key={index} todo={todo.inputValue} count={index + 1} />
+            <ListElement
+              key={index}
+              todo={todo.inputValue}
+              count={index + 1}
+              deleteTodo={this.props.deleteTodo}
+            />
           ))}
         </ListGroup>
       </Container>
@@ -83,7 +89,8 @@ const mapStateToProps = (state, store) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTodo: text => dispatch(todoAction.addTodo(text))
+    addTodo: text => dispatch(todoAction.addTodo(text)),
+    deleteTodo: todo => dispatch(todoAction.deleteTodo(todo))
   };
 };
 

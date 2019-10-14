@@ -5,9 +5,9 @@ export const addTodo = text => ({
   text
 });
 
-export const deleteTodo = ({ id } = {}) => ({
+export const deleteTodo = todo => ({
   type: actionTypes.DELETE_TODO,
-  id
+  todo
 });
 
 export const checkedTodo = (id, update) => ({
