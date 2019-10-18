@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-//import { getTodos } from "../selectors/selectors";
 import * as todoAction from "../actions/todoAction";
 import ListElement from "./ListElement";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -47,6 +46,27 @@ export class TodoList extends React.Component {
     }
 
     this.props.addTodo(todo);
+  }
+
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem("inputValue");
+      const inputValue = JSON.parse(json);
+
+      console.log(inputValue);
+      if (inputValue) {
+        this.setState(() => ({ inputValue }));
+      }
+    } catch (e) {}
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.todos.length !== this.props.todos.length);
+    const json = JSON.stringify(this.props.todos);
+    console.log(json);
+
+    console.log(localStorage.setItem("inputValue", json));
+    // console.log("saving data!");
   }
 
   render() {

@@ -9,7 +9,8 @@ export default class ListElement extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
   }
-  handleClick() {
+  handleClick(e) {
+    e.preventDefault();
     this.props.deleteTodo(this.props.todo);
   }
 
