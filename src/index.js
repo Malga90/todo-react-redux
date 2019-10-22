@@ -5,9 +5,14 @@ import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ToDoListApp from "./components/ToDoListApp";
 import * as serviceWorker from "./serviceWorker";
-import configureStore from "./store/configureStore";
+import { persistedState, configureStore } from "./store/configureStore";
+import { saveState } from "./localStorage";
 
-const store = configureStore();
+const store = configureStore(persistedState);
+
+store.subscribe(() => {
+  saveState({ todos: store.getState().todos });
+});
 
 ReactDOM.render(
   <Provider store={store}>
